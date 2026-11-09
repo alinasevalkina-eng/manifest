@@ -1,0 +1,567 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Мой вектор · Алина</title>
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@400;600;700;800;900&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --burg:#6B1D3A;--burg-light:#8B3A5A;--burg-dark:#4a1228;
+  --gold:#C4956A;--gold-light:#e8d5c4;
+  --blush:#F5E6EC;--blush2:#fdf5f8;
+  --ink:#1a1a1a;--muted:#6b6675;--line:#ede6f0;
+  --bg:#ffffff;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-padding-top:env(safe-area-inset-top,0px);}
+body{
+  font-family:'Manrope','Helvetica Neue',sans-serif;
+  background:var(--bg);color:var(--ink);line-height:1.65;
+  padding-top:env(safe-area-inset-top,0px);
+  padding-bottom:env(safe-area-inset-bottom,0px);
+}
+.wrap{max-width:780px;margin:0 auto;padding:0 24px 80px;}
+
+/* ── COVER ── */
+.cover{text-align:center;padding:100px 20px 80px;border-bottom:1px solid var(--line);}
+.cover .line{width:70px;height:3px;background:var(--burg);margin:0 auto 28px;border-radius:2px;}
+.cover h1{font-family:'Unbounded',sans-serif;font-weight:900;font-size:2.8rem;color:var(--burg);letter-spacing:-.03em;line-height:1.1;}
+.cover .sub{font-size:1.15rem;color:var(--burg-light);margin-top:18px;font-style:italic;line-height:1.55;}
+.cover .line2{width:50px;height:2px;background:var(--gold);margin:28px auto;border-radius:2px;}
+.cover .author{font-family:'Unbounded',sans-serif;font-size:.7rem;font-weight:800;letter-spacing:.18em;text-transform:uppercase;color:var(--burg);}
+
+/* ── LABELS ── */
+.lbl{font-family:'Unbounded',sans-serif;font-size:.62rem;font-weight:800;letter-spacing:.15em;text-transform:uppercase;margin:54px 0 12px;display:inline-block;padding:8px 16px;border-radius:22px;}
+.lbl.burg{background:rgba(107,29,58,.1);color:var(--burg);}
+.lbl.gold{background:rgba(196,149,106,.15);color:#8a6540;}
+
+/* ── HEADINGS ── */
+h2{font-family:'Unbounded',sans-serif;font-weight:800;font-size:1.55rem;line-height:1.25;letter-spacing:-.02em;margin-bottom:18px;color:var(--ink);}
+h2 .accent{color:var(--burg);}
+h3{font-family:'Unbounded',sans-serif;font-weight:800;font-size:1.15rem;margin-bottom:12px;}
+
+p{margin-bottom:14px;font-size:1.08rem;line-height:1.65;}
+p b{font-weight:800;}
+
+/* ── HERO BLOCK ── */
+.hero{background:linear-gradient(140deg,#6B1D3A 0%,#4a1228 55%,#8B3A5A 100%);border-radius:26px;padding:34px 32px;color:#fff;margin-top:14px;position:relative;overflow:hidden;}
+.hero::after{content:'';position:absolute;right:-80px;top:-80px;width:260px;height:260px;border-radius:50%;background:rgba(255,255,255,.06);}
+.hero p{color:rgba(255,255,255,.93);position:relative;font-size:1.12rem;line-height:1.7;}
+.hero b{color:#fff;}
+.hero .hl{color:var(--gold-light);font-weight:800;}
+
+/* ── QUOTE ── */
+.quote{border-left:4px solid var(--gold);padding:18px 26px;margin:20px 0;background:var(--blush2);font-style:italic;font-size:1.08rem;color:var(--burg-dark);border-radius:0 14px 14px 0;line-height:1.6;}
+
+/* ── CARD ── */
+.card{background:#fff;border:1.5px solid var(--line);border-radius:22px;padding:28px 28px;margin:16px 0;}
+
+/* ── STEPS ── */
+.steps{margin-top:10px;}
+.step{display:flex;gap:18px;align-items:flex-start;background:#fff;border-radius:20px;padding:22px 24px;margin-bottom:12px;border:1.5px solid var(--line);}
+.step .ic{flex:0 0 auto;width:38px;height:38px;border-radius:13px;display:flex;align-items:center;justify-content:center;font-family:'Unbounded',sans-serif;font-weight:800;font-size:.82rem;color:#fff;background:linear-gradient(135deg,var(--burg),var(--burg-light));}
+.step .st{font-size:1.05rem;line-height:1.55;}
+.step .st b{font-weight:800;}
+
+/* ── DARK BLOCK ── */
+.dark{background:var(--burg-dark);color:#fff;border-radius:26px;padding:32px 30px;margin-top:18px;}
+.dark h3{font-family:'Unbounded',sans-serif;font-weight:900;font-size:1.2rem;margin-bottom:14px;color:#fff;}
+.dark p{color:rgba(255,255,255,.9);font-size:1.08rem;line-height:1.65;}
+.dark b{color:#fff;}
+.dark .hl{color:var(--gold-light);font-weight:800;}
+
+/* ── GRADIENT CARD ── */
+.grad{background:linear-gradient(135deg,var(--blush),#fff5f0);border-radius:24px;padding:28px 28px;margin-top:18px;border:1.5px solid #e8d0d8;}
+.grad h3{color:var(--burg);}
+.grad ul{list-style:none;padding:0;}
+.grad li{padding:11px 0 11px 28px;position:relative;font-size:1.05rem;line-height:1.55;}
+.grad li::before{content:'→';position:absolute;left:0;color:var(--burg);font-weight:800;}
+
+/* ── CALLOUT ── */
+.callout{background:linear-gradient(120deg,#fff8f0,#ffeedd);border-radius:20px;padding:24px 26px;margin:18px 0;border:1px solid #f0d0a8;font-size:1.05rem;line-height:1.6;}
+.callout b{font-weight:800;color:#8a5c00;}
+
+/* ── PROG LIST ── */
+.prog{background:linear-gradient(140deg,var(--burg-dark),#2a1020);color:#fff;border-radius:26px;padding:32px 28px;margin-top:18px;}
+.prog h3{font-family:'Unbounded',sans-serif;font-weight:900;font-size:1.2rem;margin-bottom:16px;color:#fff;}
+.prog ul{list-style:none;padding:0;}
+.prog li{padding:13px 0 13px 28px;position:relative;font-size:1.05rem;line-height:1.5;border-top:1px solid rgba(255,255,255,.1);}
+.prog li:first-child{border-top:none;}
+.prog li::before{content:'';position:absolute;left:0;top:22px;width:14px;height:3px;border-radius:3px;background:linear-gradient(90deg,var(--gold),var(--gold-light));}
+
+/* ── SPHERE TABLE ── */
+.sphere-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:16px;}
+.sphere-item{display:flex;align-items:center;gap:10px;padding:12px 16px;border-radius:14px;font-size:.98rem;line-height:1.4;}
+.sphere-item .dot{flex:0 0 auto;width:10px;height:10px;border-radius:50%;}
+.dot.red{background:#e74c3c;}
+.dot.yellow{background:#f39c12;}
+.dot.green{background:#27ae60;}
+.sphere-item.bg-red{background:rgba(231,76,60,.08);}
+.sphere-item.bg-yellow{background:rgba(243,156,18,.08);}
+.sphere-item.bg-green{background:rgba(39,174,96,.08);}
+
+/* ── PROGRESS BAR ── */
+.progress-wrap{margin:24px 0;}
+.progress-label{display:flex;justify-content:space-between;font-family:'Unbounded',sans-serif;font-size:.75rem;font-weight:800;margin-bottom:8px;color:var(--muted);}
+.progress-bar{height:18px;background:#ede6f0;border-radius:12px;overflow:hidden;position:relative;}
+.progress-fill{height:100%;border-radius:12px;background:linear-gradient(90deg,var(--burg),var(--burg-light),var(--gold));transition:width .5s;}
+.progress-pct{position:absolute;right:12px;top:50%;transform:translateY(-50%);font-family:'Unbounded',sans-serif;font-size:.65rem;font-weight:800;color:var(--burg-dark);}
+
+/* ── CHECKLIST ── */
+.checklist{margin-top:14px;}
+.check-group{margin-bottom:20px;}
+.check-group h4{font-family:'Unbounded',sans-serif;font-size:.85rem;font-weight:800;color:var(--burg);margin-bottom:10px;padding-left:4px;}
+.check-item{display:flex;align-items:flex-start;gap:12px;padding:10px 14px;border-radius:12px;margin-bottom:6px;font-size:1rem;line-height:1.5;background:var(--blush2);}
+.check-item .cb{flex:0 0 auto;width:22px;height:22px;border:2px solid var(--burg-light);border-radius:6px;margin-top:2px;}
+.check-item b{font-weight:700;}
+.check-item.periodic{background:rgba(196,149,106,.1);}
+
+/* ── FINAL ── */
+.final{background:linear-gradient(140deg,var(--burg),var(--burg-dark));color:#fff;border-radius:26px;padding:44px 34px;text-align:center;margin-top:44px;}
+.final p{text-align:center;font-size:1.22rem;line-height:1.85;color:rgba(255,255,255,.93);}
+.final b{color:#fff;}
+
+.spacer{height:24px;}
+
+/* ── TWO FIGURES ── */
+.figures{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-top:18px;}
+.figure-card{border-radius:24px;padding:28px 24px;text-align:center;}
+.figure-card.now{background:linear-gradient(135deg,#f5e6ec,#ede0e8);border:1.5px solid #d8c0cc;}
+.figure-card.goal{background:linear-gradient(135deg,#e8f5e9,#f1f8e9);border:1.5px solid #b8d8b0;}
+.figure-icon{font-size:3.5rem;margin-bottom:12px;}
+.figure-card h3{font-family:'Unbounded',sans-serif;font-size:1rem;margin-bottom:6px;}
+.figure-card .figure-quote{font-size:.95rem;font-style:italic;color:var(--muted);line-height:1.4;}
+.figure-card.now h3{color:var(--burg);}
+.figure-card.goal h3{color:#2e7d32;}
+.figure-pct{font-family:'Unbounded',sans-serif;font-size:2rem;font-weight:900;margin:8px 0;}
+.figure-card.now .figure-pct{color:var(--burg);}
+.figure-card.goal .figure-pct{color:#2e7d32;}
+
+@media(max-width:600px){
+  .cover h1{font-size:2rem;}
+  .cover{padding:70px 16px 50px;}
+  h2{font-size:1.3rem;}
+  .hero{padding:26px 22px;border-radius:20px;}
+  .dark{padding:24px 22px;border-radius:20px;}
+  .prog{padding:24px 22px;border-radius:20px;}
+  .step{padding:18px 18px;}
+  .card{padding:22px 20px;}
+  .grad{padding:22px 20px;}
+  .final{padding:32px 22px;}
+  .final p{font-size:1.1rem;}
+  .sphere-grid{grid-template-columns:1fr;}
+  .figures{grid-template-columns:1fr;}
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<!-- ═══════ ОБЛОЖКА ═══════ -->
+<div class="cover">
+  <div class="line"></div>
+  <h1>МОЙ ВЕКТОР</h1>
+  <div class="sub">Манифест жизни, которую я выбираю.<br>Не мечта. Не фантазия. Направление.</div>
+  <div class="line2"></div>
+  <div class="author">АЛИНА</div>
+</div>
+
+<!-- ═══════ ИСТИНА ═══════ -->
+<div class="lbl burg">Фундамент</div>
+<h2>Истина, <span class="accent">с которой я живу</span></h2>
+
+<div class="hero">
+<p>В этой жизни возможно всё. Какой бы подход ни брать - религиозный, матрица, вселенная, что угодно - единственная истина в том, что я могу создать в этом мире абсолютно всё, что я хочу. Если где-то мне что-то кажется невозможным, неадекватным, слишком гиперболизированным - это говорит только о том, что где-то в глубине души я себе это не позволяю, не разрешаю, есть какие-то убеждения, блокирующие то, что я хочу. Хотя по факту физически это всё возможно.</p>
+</div>
+
+<div class="quote">Быть реалистом - это всегда соглашаться на свой уровень. Это тоже стратегия. Просто моя стратегия - не быть реалистом и не соглашаться на тот уровень, который есть у меня сейчас, и пытаться из всех сил достичь того, что я действительно хочу.</div>
+
+<div class="hero">
+<p>Невозможного не существует. Всё вокруг - вакуум, в котором можно создать абсолютно всё, что ты хочешь. И вот эти мои истины не обременены установками, блоками, опасениями, заземлениями. Это чистая правда о том, как устроен мир.</p>
+</div>
+
+<!-- ═══════ ИДЕНТИЧНОСТЬ ═══════ -->
+<div class="spacer"></div>
+<div class="lbl burg">Идентичность</div>
+<h2>Кто я - <span class="accent">и точка</span></h2>
+
+<div class="dark">
+<h3>Я - продюсер с крупнейшим продюсерским центром, известная как эксперт, у которой охотно покупают высококачественные продукты по продюсированию. И одновременно - автор и медийная личность, которая снимает животрепещущие подкасты и пишет книги-порталы на глубокие личностные темы.</h3>
+<p>Оба направления равноценны и питают друг друга. Единственный вариант - совместить всё без ущерба для каждого.</p>
+</div>
+
+<div class="card">
+<p>Я принимаю в себе своё эго, свой нарциссизм, что угодно, то, что это диктует. И я принимаю тот факт, что <b>я хочу быть звездой</b>.</p>
+<p>Что в моём понимании звезда? Это человек, который на всём российском пространстве известен в определённом образе, с определённым позиционированием. Мой вектор - <b>Ида Галич, Ксения Собчак</b>. Огромная медийка, огромная узнаваемость. При этом - статусная.</p>
+<p>Моя нарциссическая черта - не болезнь, а двигатель. Я не лечу его - я даю ему русло. Амбиции остаются, зависимость от восхищения уходит. <b>Дракон не в клетке - дракон летит.</b></p>
+</div>
+
+<!-- ═══════ НАСТОЯЩАЯ Я ═══════ -->
+<div class="spacer"></div>
+<div class="lbl burg">Настоящая я</div>
+<h2>Что я знаю <span class="accent">о себе наверняка</span></h2>
+
+<div class="hero">
+<p>Какая я. Разъебная, мне нравится нравиться людям, мне нравится быть не стандартной и заметной. Мне нравится быть сексуальной. <b>Мне нравится быть сильной успешной сукой.</b> Мне нравится решать вопросы с холодной головой с позиции выше, как Миранда Присли.</p>
+</div>
+
+<div class="quote">Меня разрушило послабление себе: надо нежно, плавно. Да нихуя, если мой образ меня другой.</div>
+
+<div class="card">
+<p>Я старалась всю жизнь жить по принципу: <b>ответственность за мои действия, планы и цели - она только всегда на мне.</b> Честно, мне это очень помогало, и я ни разу в жизни не видела ситуации, где это работало против меня.</p>
+<p>Даже когда я это диктую - <b>у меня включается энергия Миранды Присли.</b> Значит, это вот какая-то сила фоновая. Типа я могу решить абсолютно всё.</p>
+</div>
+
+<div class="dark">
+<h3>Когда у меня достаточно денег ежемесячно - у меня всё хорошо в отношениях с мужем.</h3>
+<p>Я перестаю требовать от него соответствовать ожиданиям в доходе. Мне важно, чтобы я не смотрела на ценники, чтобы я никогда не испытывала чувства, что я не могу за что-то сейчас заплатить. Я хочу жить настолько в свободе при распоряжении финансами, что у меня есть на всё - на всё, что нужно мне и моей семье.</p>
+</div>
+
+<div class="card">
+<p>Программа «я сама» - это с одной стороны и дар, и проклятие. <b>Дар</b> - потому что от этого есть результат, потому что ты ни от кого ничего не ждёшь. <b>Проклятие</b> - потому что именно эта программа не даёт возможность просить помощи, рассчитывать на мужа.</p>
+<p>Я всю жизнь работала, потому что «я сама», потому что мне никто нигде никогда не мог помочь. Это давало свои результаты в деньгах - ты ни от кого ничего не ждёшь. Но именно она привела меня в отношения, в которых я ломовая лошадь.</p>
+</div>
+
+<div class="quote">Разрушает не отсутствие отдыха, а то что я не иду к целям. Движение к цели - мой кислород. Стояние на месте - задыхаюсь.</div>
+
+<!-- ═══════ КАРТИНА ЖИЗНИ ═══════ -->
+<div class="spacer"></div>
+<div class="lbl burg">Видение</div>
+<h2>Картина жизни, <span class="accent">куда я стремлюсь</span></h2>
+
+<div class="lbl gold">Реализация</div>
+
+<div class="card">
+<p>Я однозначно кайфую от того, что я на слуху, на виду, я популярна, медийна, известна.</p>
+<p><b>Я хочу быть на экранах телевизора. Я хочу вести своё шоу. Я хочу хотя бы раз сняться в фильме</b> - в серьёзной роли, в идеале главной. Я хочу общаться с кругом известных людей - не потому что просто этого хочу, а потому что я сама интересный для них человек.</p>
+<p>Моя работа - подкасты, фильмы, книги, встречи, рекламы, коллаборации. Это не ассоциируется с усталостью. Это живое, активное, меняющееся. Я готова работать 24 на 7, но чтобы это не было «сижу, выполняю функционал».</p>
+</div>
+
+<div class="lbl gold">Творчество</div>
+
+<div class="card">
+<p>Я вижу себя <b>автором нескольких книг</b>. Каждая - лёгкая в чтении, понятная любому, но с терапевтическим эффектом. Она трансформирует человека за прочтение. Книга - это портал.</p>
+<p>Я вижу <b>популярные подкасты</b> на темы, которые мне интересны. У меня уже три глубоких темы, на которые можно подобрать разных героев и сделать полноценные программы с классными смыслами.</p>
+<p>У меня нет проблем с идеями - они приходят постоянно. Мне нужно их просто реализовывать. Если пришла идея - я иду её реализовывать и показываю миру.</p>
+</div>
+
+<div class="hero">
+<p><b>У меня нет ни одного варианта и шанса быть незаметной.</b> Рано или поздно меня заметят - то тут, то там, то сям. И этот путь выведет туда, куда мне надо.</p>
+</div>
+
+<div class="lbl gold">Тело, энергия, сексуальность</div>
+
+<div class="card">
+<p>Я хочу себе очень нравиться. <b>Смотришь в зеркало - и кайфуешь.</b> Я хочу нравиться другим. Я хочу вызывать безумное сексуальное желание со стороны мужчин и при этом - образ королевы. Не только сексуальное желание, но и дикое уважение и желание такой женщины рядом.</p>
+<p>Я хочу быть <b>живая, расцветающая, на максимум в пике сексуальной энергии</b>. Живая, не запрещающая себе ничего, много позволяющая.</p>
+<p>Спорт - большая роль в жизни. Рельефное тело. Танцы - пластика, проявленность, потеря контроля в безопасном пространстве. Танцевальные идеи, которые приходят в голову - реализовывать, снимать, показывать миру.</p>
+</div>
+
+<div class="lbl gold">Отношения</div>
+
+<div class="card">
+<p>Я вижу себя в отношениях с <b>яркими, страстными, дикими, живыми чувствами</b>. Мужик рядом со мной должен охуенно выглядеть - спортивный, мужественный, сексуальный. Я позволяю себе этого требовать.</p>
+<p>Я хочу, чтобы он помогал мне финансово. Я хочу плавиться от мужика. И хочу, чтобы он горел от меня как ненормальный.</p>
+<p>Будет это мой муж или кто-то другой - я допускаю оба варианта. Мне 32 года. Я не запрещаю себе ничего. Но я не ищу - пусть найдёт меня сам. <b>Королева не ищет - королева выбирает.</b></p>
+</div>
+
+<!-- ═══════ ПРОФЕССИОНАЛЬНОЕ ВИДЕНИЕ ═══════ -->
+<div class="spacer"></div>
+<div class="lbl burg">Профессия</div>
+<h2>Профессиональное <span class="accent">видение</span></h2>
+
+<div class="dark">
+<h3>Я не только автор-медийная личность, я ещё и сильный продюсер с глубокими компетенциями. Эти две истории взаимосвязаны и питают друг друга.</h3>
+<p>На своём примере показываю путь из no name в звезду.</p>
+</div>
+
+<div class="card">
+<p><b>Продюсер:</b> известна на рынке как эксперт в продвижении - «человек который из no name делает звезду в медийном пространстве и монетизирует её историю». Владею крупнейшей компанией по продвижению экспертов и бизнеса. Крупнейший продюсерский центр с которым сотрудничают звёзды и медийные лица.</p>
+<p><b>Автор-медийная личность:</b> являюсь результатом своей же работы - личный бренд, личная страница и InfoBiz Club растут быстро. Экспертиза доказана продуктами которые покупаются.</p>
+</div>
+
+
+<!-- ═══════ КНИГА И ВЕГАС ═══════ -->
+<div class="spacer"></div>
+<div class="lbl burg">Главный проект</div>
+<h2>Книга <span class="accent">и маркетинговая связка</span></h2>
+
+<div class="dark">
+<h3>Я пиздец как сильно хочу реализовать маркетинговую связку по книге с Вегасом.</h3>
+<p>Пусть это навязчивая идея, пусть маниакальная - мне насрать. Я хочу. Физически это возможно. За деньги возможно всё. Значит, мне нужны эти деньги.</p>
+</div>
+
+<div class="grad">
+<h3>Что входит в связку</h3>
+<ul>
+<li><b>Вегас озвучивает Данилу</b> в аудиокниге</li>
+<li><b>Рекламная стратегия в его аккаунте:</b> провокационное фото (чёрный фон, он в чёрном, я в красном платье, «упс, кажется пора вам что-то рассказать»), потом рилс со сценой из книги, потом раскрытие - это книга</li>
+<li><b>Перегон его миллионной аудитории</b> на меня</li>
+<li><b>Обложка журнала с ним</b> и статья про позволение женщины - «Тебе можно»</li>
+<li><b>Экранизация книги.</b> Я - в главной роли. Рядом - Вегас</li>
+<li><b>Песня от исполнителя</b> по книге для виральности</li>
+</ul>
+</div>
+
+<div class="quote">Между мной и этим - лестница, а не пропасть. И я знаю ступени. Каждый шаг - логическое продолжение предыдущего.</div>
+
+<!-- ═══════ НАВЫКИ И ШАГИ ═══════ -->
+<div class="spacer"></div>
+<div class="lbl burg">Действия</div>
+<h2>Что мне нужно - <span class="accent">навыки и шаги</span></h2>
+
+<div class="steps">
+<div class="step"><div class="ic">01</div><div class="st"><b>Актёрское мастерство.</b> Для ролей, подкастов, камеры, проявленности. Если хочу сняться в фильме - мне нужен этот навык. Записаться на курс.</div></div>
+
+<div class="step"><div class="ic">02</div><div class="st"><b>Ораторское мастерство.</b> Для подкастов, выступлений, интервью. Поставить речь, уверенность на камере, управление голосом.</div></div>
+
+<div class="step"><div class="ic">03</div><div class="st"><b>Танцы и пластика тела.</b> High heels, потом латина. Если пришла идея поставить танец - иду и ставлю, красиво снимаю, выкладываю. Танцы - канал потери контроля, сексуальности, свободы. Мечта с детства, которую наконец себе разрешила.</div></div>
+
+<div class="step"><div class="ic">04</div><div class="st"><b>Пение и голос.</b> Для раскрытия голоса, уверенности. Не цель стать певицей - цель открыть голос.</div></div>
+
+<div class="step"><div class="ic">05</div><div class="st"><b>Работа на камеру как ведущая.</b> Отдельный навык: смотреть в объектив, держать ритм, управлять гостем. Тренировать - записывая себя на телефон регулярно.</div></div>
+
+<div class="step"><div class="ic">06</div><div class="st"><b>Нетворкинг - системный навык.</b> Целенаправленно выходить на людей, которые на ступень выше. Мероприятия, закрытые клубы, совместные проекты. Одно целевое знакомство в месяц.</div></div>
+
+<div class="step"><div class="ic">07</div><div class="st"><b>Косметолог - это не блажь, это моя работа.</b> Если я хочу быть медийным лицом, ведущей, на ТВ - лицо и внешность это профессиональный инструмент. Регулярный уход - часть профессии, не расход на роскошь.</div></div>
+
+<div class="step"><div class="ic">08</div><div class="st"><b>Шикарные образы и съёмки.</b> Покупать себе вау-образы - пусть не часто, но целостные, заметные, яркие. Под каждый - съёмка. Это контент, это медийность, это проявленность. Каждый образ - инвестиция в узнаваемость.</div></div>
+</div>
+
+<!-- ═══════ ДВА НАПРАВЛЕНИЯ ═══════ -->
+<div class="spacer"></div>
+<div class="lbl gold">Два направления</div>
+<h2>Продюсирование <span class="accent">и авторство</span></h2>
+
+<div class="card">
+<p>Продюсирование - это не временный мостик. Это полноценное направление, которое приносит доход и строит репутацию. Как только я его перечёркиваю - остаюсь без денег. А без денег рушится всё остальное.</p>
+<p><b>Единственный вариант - совместить оба направления без ущерба для каждого.</b></p>
+</div>
+
+<div class="prog">
+<h3>InfoBiz Club</h3>
+<ul>
+<li><b>Аккаунт, который развиваю</b> - привлекает клиентов в продюсерский центр</li>
+<li><b>На консультации, ведение проектов, продукты, AI-агент</b></li>
+<li><b>Задача</b> - со временем делегировать так, чтобы работало максимально без меня</li>
+</ul>
+</div>
+
+<div class="card">
+<h3>Продюсерский центр как бизнес</h3>
+<p>Один из моих бизнесов. <b>Я - кейс своего же центра:</b> сама себя спродюсировала, стала медийной, стала звездой. Это сильнейший маркетинг.</p>
+</div>
+
+<!-- ═══════ ДВА ОБРАЗА ═══════ -->
+<div class="spacer"></div>
+<div class="lbl burg">Точка А → Точка Б</div>
+<h2>Где я сейчас - <span class="accent">и куда иду</span></h2>
+
+<div class="figures">
+  <div class="figure-card now">
+    <div class="figure-icon">🧍‍♀️</div>
+    <h3>Я сейчас</h3>
+    <div class="figure-pct">20%</div>
+    <div class="figure-quote">«как-то живу»</div>
+  </div>
+  <div class="figure-card goal">
+    <div class="figure-icon">🌟</div>
+    <h3>К чему стремлюсь</h3>
+    <div class="figure-pct">100%</div>
+    <div class="figure-quote">«яркая насыщенная полноценная жизнь полная энергии, любви, силы, ресурса и развития»</div>
+  </div>
+</div>
+
+<div class="card" style="margin-top:20px;">
+<h3 style="color:var(--burg);">Я сейчас</h3>
+<div class="sphere-grid">
+  <div class="sphere-item bg-yellow"><span class="dot yellow"></span>Силы / энергия — ±</div>
+  <div class="sphere-item bg-red"><span class="dot red"></span>Деньги — минус</div>
+  <div class="sphere-item bg-red"><span class="dot red"></span>Отношения с мужем — минус</div>
+  <div class="sphere-item bg-yellow"><span class="dot yellow"></span>Внешность — ±</div>
+  <div class="sphere-item bg-yellow"><span class="dot yellow"></span>Состояние — ±</div>
+  <div class="sphere-item bg-red"><span class="dot red"></span>Развитие и реализация — минус</div>
+  <div class="sphere-item bg-red"><span class="dot red"></span>Обучение — минус</div>
+  <div class="sphere-item bg-red"><span class="dot red"></span>Проявленность — минус</div>
+  <div class="sphere-item bg-yellow"><span class="dot yellow"></span>Отношения с сыном — ±</div>
+  <div class="sphere-item bg-red"><span class="dot red"></span>Быт — минус</div>
+  <div class="sphere-item bg-red"><span class="dot red"></span>Соцсвязи и друзья — минус</div>
+  <div class="sphere-item bg-red"><span class="dot red"></span>Инвестиции — минус</div>
+  <div class="sphere-item bg-red"><span class="dot red"></span>Путешествия — минус</div>
+  <div class="sphere-item bg-red"><span class="dot red"></span>Мышление — негативное</div>
+</div>
+</div>
+
+<div class="card">
+<h3 style="color:#2e7d32;">К чему стремлюсь</h3>
+<div class="sphere-grid">
+  <div class="sphere-item bg-green"><span class="dot green"></span>Силы — много сил</div>
+  <div class="sphere-item bg-green"><span class="dot green"></span>Деньги — ≥500к/мес</div>
+  <div class="sphere-item bg-green"><span class="dot green"></span>Отношения с мужем — плюс</div>
+  <div class="sphere-item bg-green"><span class="dot green"></span>Внешность — подтянутое здоровое тело, косметологи</div>
+  <div class="sphere-item bg-green"><span class="dot green"></span>Состояние — стабильно хорошее</div>
+  <div class="sphere-item bg-green"><span class="dot green"></span>Здоровье — плюс</div>
+  <div class="sphere-item bg-green"><span class="dot green"></span>Развитие — не тормозить, реализовывать всё что хочу</div>
+  <div class="sphere-item bg-green"><span class="dot green"></span>Обучение — каждый день учиться новому</div>
+  <div class="sphere-item bg-green"><span class="dot green"></span>Проявленность — максимум в обоих блогах</div>
+  <div class="sphere-item bg-green"><span class="dot green"></span>Отношения с сыном — плюс</div>
+  <div class="sphere-item bg-green"><span class="dot green"></span>Быт — всегда чисто, всегда вкусно</div>
+  <div class="sphere-item bg-green"><span class="dot green"></span>Соцсвязи — силы и желание общаться</div>
+  <div class="sphere-item bg-green"><span class="dot green"></span>Инвестиции — плюс</div>
+  <div class="sphere-item bg-green"><span class="dot green"></span>Путешествия — хотя бы иногда сменить обстановку</div>
+  <div class="sphere-item bg-green"><span class="dot green"></span>Мышление — позитивное</div>
+</div>
+</div>
+
+<!-- ═══════ ШКАЛА ═══════ -->
+<div class="spacer"></div>
+<div class="lbl gold">Шкала</div>
+<h2>Путь <span class="accent">от 20% к 100%</span></h2>
+
+<div class="progress-wrap">
+  <div class="progress-label"><span>Я сейчас</span><span>Моя цель</span></div>
+  <div class="progress-bar">
+    <div class="progress-fill" style="width:20%;"></div>
+    <div class="progress-pct">20%</div>
+  </div>
+</div>
+
+<div class="grad">
+<h3>Ключевые рычаги перехода</h3>
+<ul>
+<li><b>Спорт ежедневно</b> → силы, энергия, внешность, здоровье</li>
+<li><b>Позитивное мышление</b> → состояние, отношения, энергия</li>
+<li><b>Системная работа на доход</b> → деньги, реализация, уверенность</li>
+<li><b>Обучение компетенциям</b> → развитие, соцлифт, окружение</li>
+<li><b>Максимальная проявленность</b> → оба блога, книга, подкаст</li>
+<li><b>Энергообмен в отношениях</b> → муж, сын, друзья</li>
+</ul>
+</div>
+
+<div class="callout">
+<b>Наблюдение:</b> социальный лифт = обучение с окружением. Пыриков, Картози, PR - надо специально закладывать из дохода на обучение, где я иду за окружением. + театральное/актёрское.
+</div>
+
+<!-- ═══════ ЕЖЕДНЕВНЫЙ ЧЕКЛИСТ ═══════ -->
+<div class="spacer"></div>
+<div class="lbl burg">Чеклист</div>
+<h2>Мой день, <span class="accent">который ведёт к 100%</span></h2>
+
+<p>У меня должен быть прям график на каждый день - что в нём должно быть, чтобы я это выполняла, и я однозначно приду к тому, к чему я стремлюсь, если я буду это всё выполнять. Это мой чеклист на день.</p>
+
+<div class="card">
+<div class="checklist">
+
+<div class="check-group">
+<h4>☀️ Утро</h4>
+<div class="check-item"><div class="cb"></div><b>Спорт</b> (6:00-7:00)</div>
+<div class="check-item"><div class="cb"></div><b>Домашние дела + книга на внутренние изменения</b> (8:00-9:00)</div>
+<div class="check-item"><div class="cb"></div><b>Настрой на день</b> - благодарность, позитивные установки</div>
+</div>
+
+<div class="check-group">
+<h4>💼 Рабочий день</h4>
+<div class="check-item"><div class="cb"></div><b>Срочные дела → доход</b> (продюсирование, заказы)</div>
+<div class="check-item"><div class="cb"></div><b>Долгосрочные дела → InfoBiz Club</b> (контент, продукт)</div>
+<div class="check-item"><div class="cb"></div><b>Книга + подкаст + личный контент</b> (проявленность)</div>
+<div class="check-item"><div class="cb"></div><b>Обучение компетенциям</b> (часть - во время тренировок ребёнка)</div>
+<div class="check-item"><div class="cb"></div><b>Блог Кирилла / обучение Кирилла</b></div>
+</div>
+
+<div class="check-group">
+<h4>🌙 Вечер</h4>
+<div class="check-item"><div class="cb"></div><b>Художественная литература</b> перед сном</div>
+<div class="check-item"><div class="cb"></div><b>3 конкретных плюса мужа</b> за день (практика позитивного мышления)</div>
+<div class="check-item"><div class="cb"></div><b>Замечать хорошее, благодарить</b></div>
+</div>
+
+<div class="check-group">
+<h4>📅 Регулярное</h4>
+<div class="check-item periodic"><div class="cb"></div><b>Свидание с мужем</b> - 1 раз/месяц</div>
+<div class="check-item periodic"><div class="cb"></div><b>Косметолог</b> - 1 раз/6 мес</div>
+<div class="check-item periodic"><div class="cb"></div><b>Откладывать min 1000₽/мес</b> (инвестиции)</div>
+<div class="check-item periodic"><div class="cb"></div><b>Обучение-соцлифт с окружением</b> - раз в год (Пыриков, PR, театральное/актёрское)</div>
+</div>
+
+</div>
+</div>
+
+<!-- ═══════ КАЖДЫЙ ДЕНЬ (старое) ═══════ -->
+<div class="spacer"></div>
+<div class="lbl burg">Ритуал</div>
+<h2>Что я делаю <span class="accent">каждый день</span></h2>
+
+<div class="prog">
+<h3>Нерушимые действия</h3>
+<ul>
+<li><b>Книга</b> - минимум 30 минут утром, ДО работы. Нерушимо. Это не «отнимаю у работы» - это строю будущее</li>
+<li><b>Тело</b> - спорт, танцы, движение. Мой генератор энергии. После спорта я другой человек - всегда</li>
+<li><b>Большие идеи</b> - хотя бы 5 минут: подкаст, книга, медийность. Не дать рутине сожрать вектор</li>
+<li><b>Работа</b> - продюсерские проекты, стратегия, то что кормит</li>
+<li><b>Контент</b> - вау-рилсы, нарезки, подготовка подкастов</li>
+</ul>
+</div>
+
+<div class="grad">
+<h3>Генераторы моего состояния</h3>
+<ul>
+<li><b>Книга</b> - включает творческую и сексуальную энергию. Пишу - горю. Не пишу - гасну</li>
+<li><b>Тело</b> - спорт, танцы, ходьба. После спорта я другой человек</li>
+<li><b>Большие идеи</b> - думаю о Вегасе, красной дорожке, подкасте - горю. Погружаюсь в рутину - гасну</li>
+<li><b>Деньги и работа</b> - когда есть заказы и доход, энергия есть. Когда нет денег - нет и энергии. Финансы питают всё остальное</li>
+</ul>
+<p style="margin-top:14px;padding-left:28px;font-size:1.08rem;"><b>Все работают - я стабильна. Один выпал - начинаются качели.</b></p>
+</div>
+
+<div class="quote">Обрушение старого - не наказание, а расчистка. Заявила новое видение себя - и мир выбивает старые опоры, потому что они больше не соответствуют. Чувствую это как лесенку наверх - страшно шагнуть, но там будет хорошо.</div>
+
+<!-- ═══════ ПРАВИЛА ═══════ -->
+<div class="spacer"></div>
+<div class="lbl burg">Не забыть когда откатит</div>
+<h2>Мои правила - <span class="accent">на каждый день</span></h2>
+
+<div class="hero">
+<p><b>Всё что сейчас плохо - только в моей голове.</b> Тело может, мозг может. Встань и начни - через пять минут я другой человек.</p>
+</div>
+
+<div class="hero" style="margin-top:14px;">
+<p><b>Я сворачивала горы и посложнее.</b> Это - решаемо. Всё - решаемо.</p>
+</div>
+
+<div class="hero" style="margin-top:14px;">
+<p><b>Сегодня тяжёлый день, не тяжёлая жизнь.</b> И он всё равно самый прекрасный на свете. Завтра я снова буду гореть.</p>
+</div>
+
+<div class="hero" style="margin-top:14px;">
+<p><b>Ответственность за мои действия, планы и цели - она только всегда на мне.</b> Когда этот принцип стоит твёрдо - у меня включается энергия Миранды. Когда «плывёт» - энергия гаснет.</p>
+</div>
+
+<div class="quote">Решение принято один раз - из ясности. Дальше - не пересматриваю. В дни огня - лечу. В тихие дни - иду. Но направление одно. Всегда.</div>
+
+<div class="quote">Не принимаю решений о своей жизни в гормональной яме. Не оцениваю себя в худшие дни цикла. Через неделю мир будет выглядеть иначе.</div>
+
+<div class="quote">Фантазия - не побег и не деструкция. Это чертёж. Деструкция - когда я только мечтаю. Творчество - когда я делаю. Один шаг из фантазии в реальность - каждый день.</div>
+
+<div class="quote">Масштаб - не отсутствие негатива. Это скорость, с которой я его прохожу. Пять минут - не пять часов. Почувствовала, отпустила, пошла дальше.</div>
+
+<div class="quote">Книга - не хобби. Книга - это я, настоящая. Если плачу когда пишу - значит, это живое. А живое не бывает посредственным.</div>
+
+<div class="quote">Старое рушится не потому что я плохо работаю. А потому что я из него вырастаю. Это не катастрофа - это расчистка площадки для нового.</div>
+
+<div class="quote">Мне не нужно выбирать - работать или жить. Бассейн, спорт, ребёнок - это не перерыв в работе. Это и есть жизнь, ради которой я работаю.</div>
+
+<div class="quote">Косметолог, образы, съёмки - это не блажь и не расход. Это профессиональный инструмент медийного человека. Моя внешность - моя работа.</div>
+
+<!-- ═══════ ФИНАЛ ═══════ -->
+<div class="final">
+<p>Я - продюсер, автор, медийная личность и женщина,<br>которая строит свою жизнь.</p>
+<p>Не чужую. Свою.</p>
+<p style="margin-top:18px;">Я не обнуляюсь. Я перезагружаюсь.<br>Я иду к своему.</p>
+<p style="margin-top:18px;">И у меня нет ни одного варианта быть незаметной.</p>
+<p style="margin-top:22px;"><b>Это не мечта. Это направление.<br>И я уже в пути.</b></p>
+</div>
+
+</div>
+</body>
+</html>
